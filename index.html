@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YORIE HOSTING</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      margin-top: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      animation: glitch 1.5s infinite;
+      color: #ff0000;
+    }
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #ff0000, -2px -2px #cc0000; }
+      25% { text-shadow: -2px 2px #ff3333, 2px -2px #990000; }
+      50% { text-shadow: 2px -2px #ff6666, -2px 2px #ff0000; }
+      75% { text-shadow: -1px -1px #cc0000, 1px 1px #ff4d4d; }
+      100% { text-shadow: 2px 2px #ff0000, -2px -2px #cc0000; }
+    }
+    .photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ff0000;
+      margin: 20px auto 10px;
+      box-shadow: 0 0 12px #ff0000;
+    }
+    #jam-digital {
+      font-size: 20px;
+      margin: 8px 0 15px 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #ff0000;
+      text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #222;
+      margin: 10px auto;
+      padding: 12px 18px;
+      width: 80%;
+      border-radius: 12px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ff0000;
+    }
+    li:hover {
+      background: #333;
+      box-shadow: 0 0 10px #ff0000;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .price {
+      color: #ff4d4d;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+    .payment {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 30px auto;
+      width: 85%;
+      border: 1px solid #ff0000;
+      box-shadow: 0 0 12px #ff0000;
+    }
+    .qris {
+      width: 250px;
+      border-radius: 12px;
+      margin-top: 10px;
+      border: 2px solid #ff0000;
+    }
+    .pay-box {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .pay-item {
+      background: #222;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      border: 1px solid #ff0000;
+      color: #ff9999;
+    }
+    .btn {
+      background: #ff0000;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+    .btn:hover {
+      background: #cc0000;
+    }
+    a.download-btn, button.download-btn {
+      display: inline-block;
+      background: #ff0000;
+      color: white;
+      padding: 8px 15px;
+      margin-top: 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 10px #ff0000;
+    }
+    a.download-btn:hover, button.download-btn:hover {
+      background: #cc0000;
+    }
+    .snow span {
+      position: fixed;
+      color: #ff6666;
+      animation: fall 10s linear infinite;
+      font-size: 18px;
+      z-index: 999;
+    }
+    @keyframes fall {
+      0% { top: -10px; opacity: 0; }
+      50% { opacity: 1; }
+      100% { top: 110vh; opacity: 0; }
+    }
+    .promo {
+      background: #ff0000;
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 20px auto;
+      width: fit-content;
+      font-weight: bold;
+      color: white;
+      animation: blink 1.5s infinite alternate;
+      box-shadow: 0 0 12px #ff0000;
+    }
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+    .habis-label {
+      background: linear-gradient(45deg, #ff0033, #cc0000);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: 11px;
+      margin-left: 5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: 0 0 8px #ff0000;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    /* Modal Produk */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 400px;
+      text-align: left;
+      color: white;
+      box-shadow: 0 0 15px #ff0000;
+      border: 1px solid #ff0000;
+    }
+    .close {
+      float: right;
+      cursor: pointer;
+      font-weight: bold;
+      color: #ff5555;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Efek Salju -->
+  <div class="snow">
+    <span style="left: 5%; animation-delay: 0s;">🩸</span>
+    <span style="left: 20%; animation-delay: 2s;">🩸</span>
+    <span style="left: 40%; animation-delay: 4s;">🩸</span>
+    <span style="left: 60%; animation-delay: 1s;">🩸</span>
+    <span style="left: 80%; animation-delay: 3s;">🩸</span>
+  </div>
+
+  <!-- Musik -->
+  <audio id="bg-music" loop>
+    <source src="https://files.catbox.moe/gqtgt7.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Profil & Judul -->
+  <img src="https://files.catbox.moe/9hwpi9.jpg" alt="Yorie Profile" class="photo" />
+  <h1>RAZA MODS</h1>
+  <div id="jam-digital">00:00:00</div>
+  <p>PANEL | SCRIPT BOT | SUNTIK SOSMED | CREATE WEB | DLL</p>
+
+  <!-- Tombol Musik -->
+  <button id="music-btn" class="download-btn">▶ Play Musik</button>
+
+  <!-- Promo -->
+  <div class="promo">🔥 Promo Agustus: Diskon 30%!</div>
+
+  <!-- Info klik produk -->
+  <h3 style="margin-top:25px; font-size:16px; color:#ff0000; text-shadow:0 0 8px #ff0000;">
+    ✨ Klik produk untuk lihat detail ✨
+  </h3>
+
+  <!-- Layanan -->
+  <ul>
+    <li onclick="openModal('Panel Bot WhatsApp','Panel khusus untuk bot WhatsApp, untuk menjalankan bot agar bisa terhubung ke nomor')">
+      <span class="left">🤖 Panel Bot WhatsApp <span class="habis-label">Stok Habis</span></span>
+      <span class="price">Rp1-10k</span>
+    </li>
+    <li onclick="openModal('Script Bot/API','Script bot premium, Harga mulai Rp 15.000, berikut script yg saha sediakan, Nika, ExoFloods, ExoZet')">
+      <span class="left">⚙️ Script Bot Bug</span>
+      <span class="price">Rp15-35k+</span>
+    </li>
+    <li onclick="openModal('Web Custom','Pembuatan website custom sesuai kebutuhan. Harga mulai Rp100.000')">
+      <span class="left">💻 Web Custom</span>
+      <span class="price">Hubungi CS</span>
+    </li>
+    <li onclick="openModal('Nokos Indo','Nomor Kosong Indonesia untuk verifikasi. Harga Rp5.000/nomor')">
+      <span class="left">📞 Nokos Indo <span class="habis-label">Stok Habis</span></span>
+      <span class="price">Rp4-20k</span>
+    </li>
+    <li onclick="openModal('Suntik Sosmed','Boost followers, likes, atau views dengan cepat & aman. Diskon 30% bulan ini!')">
+      <span class="left">📲 Suntik Sosmed</span>
+      <span class="price">Hubungi CS</span>
+    </li>
+    <li onclick="openModal('Hosting Script','Hosting script dengan server cepat & stabil. Harga mulai Rp20.000/bulan')">
+      <span class="left">🔥 Rename/Create Script Bug</span>
+      <span class="price">Rp15-50k+</span>
+    </li>
+    <li onclick="openModal('Jasa Bug Nomor WhatsApp','Jasa exploit nomor WA untuk kebutuhan testing. Hubungi admin untuk detail.')">
+      <span class="left">💥 Jasa Bug Nomor WhatsApp</span>
+      <span class="price">Hubungi CS</span>
+    </li>
+  </ul>
+
+  <!-- Modal Produk -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
+
+  <!-- Pembayaran -->
+  <div class="payment">
+    <h2>Metode Pembayaran</h2>
+    <p>Scan QRIS</p>
+    <img src="https://files.catbox.moe/b77hm7.jpg" alt="QRIS Yorie" class="qris" />
+    <br>
+    <a class="download-btn" href="https://files.catbox.moe/b77hm7.jpg" download>⬇ Download QRIS</a>
+
+    <br><br>
+    <h3>Upload Bukti Pembayaran (Otomatis ke WhatsApp)</h3>
+    <form action="https://formsubmit.co/razamods01@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="return handleUpload()">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="Bukti Pembayaran dari Pelanggan">
+      <input type="hidden" name="_next" id="next-link" value="#">
+      <input type="file" name="attachment" id="fileInput" accept="image/*,.pdf" required><br><br>
+      <button type="submit" class="download-btn">📤 Upload & Kirim ke CS</button>
+    </form>
+
+    <!-- Dana & Gopay -->
+    <div class="pay-box">
+      <div class="pay-item">
+        Dana: <span id="dana">085215996783</span>
+        <button class="btn" onclick="salin('dana')">SALIN</button>
+      </div>
+      <div class="pay-item">
+        Gopay: <span id="gopay">081219010585</span>
+        <button class="btn" onclick="salin('gopay')">SALIN</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kontak CS -->
+  <br>
+  <a class="download-btn" href="https://wa.me/628871364233?text=Halo%20admin%2C%20saya%20mau%20tanya%20tentang%20layanan%20Raza%20Mods" target="_blank">💬 Chat CS Sekarang</a>
+
+  <!-- Script -->
+  <script>
+    function salin(id) {
+      const text = document.getElementById(id).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("Nomor berhasil disalin: " + text);
+      });
+    }
+
+    function handleUpload() {
+      const fileInput = document.getElementById('fileInput');
+      const fileName = fileInput.files[0]?.name || 'Bukti Pembayaran';
+      const whatsappLink = `https://wa.me/628871364233?text=Halo%20kak%2C%20saya%20sudah%20melakukan%20pembayaran.%0ABukti%3A%20*${fileName}*%0ATolong%20cek%20ya~`;
+      document.getElementById('next-link').value = whatsappLink;
+      return true;
+    }
+
+    // Modal Produk
+    function openModal(title, desc) {
+      document.getElementById("modal-title").textContent = title;
+      document.getElementById("modal-desc").textContent = desc;
+      document.getElementById("myModal").style.display = "flex";
+    }
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      if (event.target == document.getElementById("myModal")) {
+        closeModal();
+      }
+    }
+
+    // Musik
+    const music = document.getElementById("bg-music");
+    const btn = document.getElementById("music-btn");
+    btn.addEventListener("click", () => {
+      if (music.paused) {
+        music.play();
+        btn.textContent = "⏸ Pause Musik";
+      } else {
+        music.pause();
+        btn.textContent = "▶ Play Musik";
+      }
+    });
+
+    // Jam Digital
+    function updateJam() {
+      const now = new Date();
+      const jam = String(now.getHours()).padStart(2, '0');
+      const menit = String(now.getMinutes()).padStart(2, '0');
+      const detik = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById("jam-digital").textContent = `${jam}:${menit}:${detik}`;
+    }
+    setInterval(updateJam, 1000);
+    updateJam();
+  </script>
+
+</body>
+</html>
